@@ -27,26 +27,28 @@ app.get('/', (req, res) => {
     res.send('Welcome to backend!')
 });
 
-
 app.get('/getAuthURL',(req,res)=>{
-    const authURL = oAuth2Client.generateAuthUrl({
-        access_type:'offline',
-        scope:ACCESS_SCOPE,
-    });
-    console.log(authURL);
-    return res.send(authURL);
+  const authURL = oAuth2Client.generateAuthUrl({
+      access_type:'offline',
+      scope:ACCESS_SCOPE,
+  });
+  console.log(authURL);
+  return res.send(authURL);
 });
 
+
 app.post('/getToken',(req,res)=>{
-    if(req.body.code == null) return res.status(400).send('Invalid Request');
-    oAuth2Client.getToken(req.body.code, (err,token)=>{
-      if(err){
-        console.error('Error retreiving access token',err);
-        return res.status(400).send('Error retreiving access token');
-      }
-      res.send(token);
-    });
-  });
+if(req.body.code == null) return res.status(400).send('Invalid Request');
+oAuth2Client.getToken(req.body.code, (err,token)=>{
+  if(err){
+    console.error('Error retreiving access token',err);
+    return res.status(400).send('Error retreiving access token');
+  }
+  res.send(token);
+});
+});
+
+
   
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
