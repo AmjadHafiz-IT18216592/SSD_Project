@@ -7,4 +7,7 @@ module.exports = app => {
     // Get files from google drive
     app.post("/readDrive", driveController.readDriveDetail);
 
+    //Upload file to google drive
+    app.post("/fileUpload", driveController.uploadFilestoDrivre);
+
 };

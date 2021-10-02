@@ -4,8 +4,6 @@ const port = 5000
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const multer = require('multer');
-const fs = require("fs");
-const formidable = require('formidable');
 const { request } = require('http');
 
 app.use(bodyParser.urlencoded({ extended: false }));
